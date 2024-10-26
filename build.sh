@@ -9,7 +9,7 @@ set -x
 wget -nv https://github.com/adesutherland/HercControl/releases/download/v1.1.0/HercControl-Ubuntu.zip
 unzip HercControl-Ubuntu.zip
 chmod +x HercControl-Ubuntu/herccontrol
-cp HercControl-Ubuntu/herccontrol /usr/local/bin
+cp -v HercControl-Ubuntu/herccontrol /usr/local/bin
 rm -r HercControl-Ubuntu
 rm HercControl-Ubuntu.zip
 
@@ -20,16 +20,17 @@ herccontrol "sf-* force" -w "HHCCD092I"
 herccontrol "exit"
 
 # Move Disks
-mv ./disks/*.cckd .
+mv -v ./disks/*.cckd .
 
 # Start Hercules
-(cd /opt/hercules/vm370; hercules -f hercules.conf -d >/dev/null 2>/dev/null &)
+# (cd /opt/hercules/vm370; hercules -f hercules.conf -d >/dev/null 2>/dev/null &)
+(cd /opt/hercules/vm370; hercules -f hercules.conf -d &)
 
 # YATA UBUNTU
 wget -nv https://github.com/adesutherland/yata/releases/download/v1.2.5/YATA-Ubuntu.zip
 unzip YATA-Ubuntu.zip
 chmod +x YATA-Ubuntu/yata
-cp YATA-Ubuntu/yata /usr/local/bin
+cp -v YATA-Ubuntu/yata /usr/local/bin
 rm -r YATA-Ubuntu
 rm YATA-Ubuntu.zip
 
@@ -37,7 +38,7 @@ rm YATA-Ubuntu.zip
 herccontrol "detach 09F0"
 wget -nv https://github.com/adesutherland/CMS-370-BREXX/releases/download/v1.0.0/BREXX.zip
 unzip BREXX.zip
-mv BREXX/gccbrx.cckd .
+mv -v BREXX/gccbrx.cckd .
 rm BREXX.zip
 rm -r BREXX
 herccontrol "attach 09F0 3350 gccbrx.cckd"
@@ -46,7 +47,7 @@ herccontrol "attach 09F0 3350 gccbrx.cckd"
 wget -nv https://github.com/adesutherland/yata/releases/download/v1.2.5/YATA-CMS.zip
 unzip YATA-CMS.zip
 mkdir io
-mv YATA-CMS/* io
+mv -v YATA-CMS/* io
 cd io
 
 # IPL
