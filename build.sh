@@ -14,10 +14,9 @@ rm -r HercControl-Ubuntu
 rm HercControl-Ubuntu.zip
 
 # Remove Shadow Files
-mkdir -p ./disks/shadows
-# hercules -f cleandisks.conf -d >/dev/null 2>/dev/null &
-hercules -f cleandisks.conf -d &
-herccontrol "sf-* force" -w "HHCCD092I" -t 240
+mkdir -p ./disks/shadows # Hercules won't run sf- if the shadow dir doesn't exist.
+hercules -f cleandisks.conf -d >/dev/null 2>/dev/null &
+herccontrol "sf-* force" -w "HHCCD092I"
 herccontrol "exit"
 
 # Move Disks
@@ -34,11 +33,11 @@ cp YATA-Ubuntu/yata /usr/local/bin
 rm -r YATA-Ubuntu
 rm YATA-Ubuntu.zip
 
-# Get latest gccbrx.cckd
+# Get latest gccbrx.cckd from the bREXX distribution
 herccontrol "detach 09F0"
 wget -nv https://github.com/adesutherland/CMS-370-BREXX/releases/download/v1.0.0/BREXX.zip
 unzip BREXX.zip
-cp BREXX/gccbrx.cckd .
+mv BREXX/gccbrx.cckd .
 rm BREXX.zip
 rm -r BREXX
 herccontrol "attach 09F0 3350 gccbrx.cckd"
@@ -47,11 +46,11 @@ herccontrol "attach 09F0 3350 gccbrx.cckd"
 wget -nv https://github.com/adesutherland/yata/releases/download/v1.2.5/YATA-CMS.zip
 unzip YATA-CMS.zip
 mkdir io
-cp YATA-CMS/* io
+mv YATA-CMS/* io
 cd io
 
 # IPL
-herccontrol "ipl 141" -w "USER DSC LOGOFF AS AUTOLOG1"
+herccontrol "ipl 6a1" -w "USER DSC LOGOFF AS AUTOLOG1"
 
 # LOGON MAINTC AND READ TAPE
 herccontrol "/cp disc" -w "^VM/370 Online"
