@@ -23,7 +23,6 @@ herccontrol "exit"
 mv -v ./disks/*.cckd .
 
 # Start Hercules
-# (cd /opt/hercules/vm370; hercules -f hercules.conf -d >/dev/null 2>/dev/null &)
 (cd /opt/hercules/vm370; hercules -f hercules.conf -d &)
 
 # YATA UBUNTU
@@ -55,7 +54,7 @@ herccontrol "ipl 6a1" -w "USER DSC LOGOFF AS AUTOLOG1"
 
 # LOGON MAINTC AND READ TAPE
 herccontrol "/cp disc" -w "^VM/370 Online"
-herccontrol "/logon maintc maintc" -w "^CMS"
+herccontrol "/logon maintc maintc" -w "^VM Community Edition V1 R1.2"
 herccontrol "/" -w "^Ready;"
 herccontrol "devinit 480 io/yatabin.aws" -w "^HHCPN098I"
 herccontrol "/cp disc" -w "^VM/370 Online"
@@ -70,12 +69,12 @@ herccontrol "/yata -v" -w "^Ready;"
 herccontrol "/logoff" -w "^VM/370 Online"
 
 # REBUILD CMS
-herccontrol "/logon maint cpcms" -w "^CMS"
+herccontrol "/logon maint cpcms" -w "^VM Community Edition V1 R1.2"
 herccontrol "/" -w "^Ready"
 herccontrol "/NEWBREXX" -w "^Ready"
 herccontrol "/define storage 16m"  -w "CP ENTERED"
-herccontrol "/ipl 190 clear" -w "^CMS"
-herccontrol "/savesys cms" -w "^CMS"
+herccontrol "/ipl 190 clear" -w "^VM Community Edition V1 R1.2"
+herccontrol "/savesys cms" -w "^VM Community Edition V1 R1.2"
 herccontrol "/" -w "^Ready;"
 herccontrol "/logoff" -w "^VM/370 Online"
 
