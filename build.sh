@@ -14,6 +14,7 @@ rm -r HercControl-Ubuntu
 rm HercControl-Ubuntu.zip
 
 # Remove Shadow Files
+mkdir -p ./disks/shadows
 # hercules -f cleandisks.conf -d >/dev/null 2>/dev/null &
 hercules -f cleandisks.conf -d &
 herccontrol "sf-* force" -w "HHCCD092I" -t 240
