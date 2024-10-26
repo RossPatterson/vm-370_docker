@@ -3,6 +3,7 @@
 
 # Exit if there is an error
 set -e
+set -x
 
 # HercControl
 wget -nv https://github.com/adesutherland/HercControl/releases/download/v1.1.0/HercControl-Ubuntu.zip
@@ -13,8 +14,9 @@ rm -r HercControl-Ubuntu
 rm HercControl-Ubuntu.zip
 
 # Remove Shadow Files
-hercules -f cleandisks.conf -d >/dev/null 2>/dev/null &
-herccontrol "sf-* force" -w "HHCCD092I"
+# hercules -f cleandisks.conf -d >/dev/null 2>/dev/null &
+hercules -f cleandisks.conf -d &
+herccontrol "sf-* force" -w "HHCCD092I" -t 240
 herccontrol "exit"
 
 # Move Disks
