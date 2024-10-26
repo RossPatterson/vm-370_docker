@@ -15,7 +15,7 @@ jobs:
     if: github.event_name == 'push'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Build image
         run: docker build . --file Dockerfile --tag image
@@ -25,12 +25,16 @@ jobs:
         run: |
            mkdir -p "${{ runner.temp }}/vm370"
            docker create -ti --name dummy image bash
-           docker cp "dummy:/opt/hercules/vm370/vm3350-1.141.cckd" "${{ runner.temp }}/vm370/vm3350-1.141.cckd"
-           docker cp "dummy:/opt/hercules/vm370/vm3350-2.241.cckd" "${{ runner.temp }}/vm370/vm3350-2.241.cckd"
-           docker cp "dummy:/opt/hercules/vm370/vm3350-3.34f.cckd" "${{ runner.temp }}/vm370/vm3350-3.34f.cckd"
-           docker cp "dummy:/opt/hercules/vm370/vm3350-4.440.cckd" "${{ runner.temp }}/vm370/vm3350-4.440.cckd"
-           docker cp "dummy:/opt/hercules/vm370/vm3350-5.540.cckd" "${{ runner.temp }}/vm370/vm3350-5.540.cckd"
-           docker cp "dummy:/opt/hercules/vm370/vm3350-6.6f0.cckd" "${{ runner.temp }}/vm370/vm3350-6.6f0.cckd"
+           docker cp "dummy:/opt/hercules/vm370/vm50-1.cckd" "${{ runner.temp }}/vm370/vm50-1.cckd"
+           docker cp "dummy:/opt/hercules/vm370/vm50-2.cckd" "${{ runner.temp }}/vm370/vm50-2.cckd"
+           docker cp "dummy:/opt/hercules/vm370/vm50-3.cckd" "${{ runner.temp }}/vm370/vm50-3.cckd"
+           docker cp "dummy:/opt/hercules/vm370/vm50-4.cckd" "${{ runner.temp }}/vm370/vm50-4.cckd"
+           docker cp "dummy:/opt/hercules/vm370/vm50-5.cckd" "${{ runner.temp }}/vm370/vm50-5.cckd"
+           docker cp "dummy:/opt/hercules/vm370/vm50-6.cckd" "${{ runner.temp }}/vm370/vm50-6.cckd"
+           docker cp "dummy:/opt/hercules/vm370/vm50-7.cckd" "${{ runner.temp }}/vm370/vm50-7.cckd"
+           docker cp "dummy:/opt/hercules/vm370/vm50-8.cckd" "${{ runner.temp }}/vm370/vm50-8.cckd"
+           docker cp "dummy:/opt/hercules/vm370/vm50u0.cckd" "${{ runner.temp }}/vm370/vm50u0.cckd"
+           docker cp "dummy:/opt/hercules/vm370/vm50u1.cckd" "${{ runner.temp }}/vm370/vm50u1.cckd"
            docker rm -f dummy
            zip -D -j -r vm370.zip "${{ runner.temp }}/vm370"
            ls "${{ runner.temp }}/vm370"

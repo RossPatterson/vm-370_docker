@@ -1,6 +1,10 @@
 VM/370 Docker Container - Changelog
 ===================================
 
+1.6.0 - VM/370 CE v1.1.2
+		bREXX v1.0.1
+		GCCLIB v1.0.1
+
 1.5.3 - CE 1.0
         HercControl v1.1.0
         YATA v1.2.5
