@@ -2,7 +2,7 @@
 FROM	ubuntu:latest
 
 RUN	apt-get update
-RUN apt-get install --no-install-recommends -y unzip wget netcat ca-certificates
+RUN apt-get install --no-install-recommends -y unzip wget netcat-traditional ca-certificates
 RUN apt-get install --no-install-recommends -y hercules dos2unix regina-rexx
 
 WORKDIR     /opt/hercules/vm370
@@ -29,7 +29,7 @@ RUN rm cleandisks.conf
 FROM ubuntu:latest
 
 RUN	apt-get update && \
-    apt-get install --no-install-recommends -y hercules c3270 zip unzip netcat \
+    apt-get install --no-install-recommends -y hercules c3270 zip unzip netcat-traditional \
     dos2unix regina-rexx wget ca-certificates && \
     apt-get -y purge $(dpkg --get-selections | grep deinstall | sed s/deinstall//g) && \
     rm -rf /var/lib/apt/lists/*
