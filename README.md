@@ -53,13 +53,13 @@ See changelog.txt for full version history
 1. Verify that your Docker userid has the new version of the container image.
 1. When you're happy with the container image, consider updating the `latest` tag to point to it:
    1. Start your Docker engine (_e.g._, Docker desktop).
-   1. `docker pull userid/vm370`
+   1. `docker pull userid/vm370:x.y.z`
    1. `docker tag  userid/vm370:x.y.z userid/vm370:latest`
    1. `docker push userid/vm370:latest`
    1. Stop your Docker engine.
 1. When you're ready to make the CMS370-BREXX and CMS370-GCCLIB build systems use the container image, update the `builder` tag to point to it:
    1. Start your Docker engine (_e.g._, Docker desktop).
-   1. `docker pull userid/vm370`
+   1. `docker pull userid/vm370:x.y.z`
    1. `docker tag  userid/vm370:x.y.z userid/vm370:builder`
    1. `docker push userid/vm370:builder`
    1. Stop your Docker engine.
