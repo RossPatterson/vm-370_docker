@@ -21,7 +21,7 @@ See changelog.txt for full version history
 - Hercules 4.0 Fork - https://github.com/SDL-Hercules-390/hyperion
 - Discussions on VM/370 are done here - https://groups.io/g/h390-vm
 
-# To use this repo:
+# To use this repo
 1. Prepare Docker:
    1. If you don't already have a Docker account, create one at https://www.docker.com.
    1. Create a "vm370" Docker repository.
@@ -34,7 +34,7 @@ See changelog.txt for full version history
 1. Make a change, commit it, and push it to your fork.  The `dockertest.yml/DockerTest` GitHub workflow job will test the container build.
 1. Tag the revision as `vn.n.n` (_e.g._, "v1.5.4") and push the tag to GitHub.  The `dockerpush.yml/DockerPublish` GitHub workflow job will push the container image to Docker.
 
-# To update the Docker image:
+# To update the Docker image
 
 1. Clone this repository to your disk.
 1. Download the VM/370 distribution you want to build.
@@ -51,3 +51,18 @@ See changelog.txt for full version history
 1. Tag the revision as `vn.n.n` (_e.g._, "v1.5.4") and push the tag to GitHub.  **NOTE:** The leading "v" is necessary - it triggers the push to Docker.
 1. Wait for the `dockerpush.yml/DockerPublish` GitHub workflow job to run.
 1. Verify that your Docker userid has the new version of the container image.
+1. When you're happy with the container image, consider updating the `latest` tag to point to it:
+   1. Start your Docker engine (_e.g._, Docker desktop).
+   1. `docker pull userid/vm370`
+   1. `docker tag  userid/vm370:x.y.z userid/vm370:latest`
+   1. `docker push userid/vm370:latest`
+   1. Stop your Docker engine.
+1. When you're ready to make the CMS370-BREXX and CMS370-GCCLIB build systems use the container image, update the `builder` tag to point to it:
+   1. Start your Docker engine (_e.g._, Docker desktop).
+   1. `docker pull userid/vm370`
+   1. `docker tag  userid/vm370:x.y.z userid/vm370:builder`
+   1. `docker push userid/vm370:builder`
+   1. Stop your Docker engine.
+   1. Go to your CMS370-BREXX and CMS370-GCCLIB repositories, and review the following files and make any necessary changes:
+      1. `cmsbuild.sh` - shell script to build the code.
+      1. `github/workflows/build.yml` - GitHub workflow files.

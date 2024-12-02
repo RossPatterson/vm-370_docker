@@ -1,6 +1,8 @@
 VM/370 Docker Container - Changelog
 ===================================
 
+1.6.1 - YATA v1.2.6
+
 1.6.0 - VM/370 CE v1.1.2
 		bREXX v1.0.1
 		GCCLIB v1.0.1
