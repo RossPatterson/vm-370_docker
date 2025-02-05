@@ -1,5 +1,6 @@
 VM/370 Docker Container - Changelog
 ===================================
+1.6.2 - 1.6.1 ommitted VM50U* volumes from Hercules config files
 
 1.6.1 - YATA v1.2.6
 
