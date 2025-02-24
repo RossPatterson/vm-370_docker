@@ -35,15 +35,6 @@ mv YATA-Ubuntu/yata /usr/local/bin
 rm -r YATA-Ubuntu
 rm YATA-Ubuntu.zip
 
-# Get latest gccbrx.cckd from the bREXX distribution
-herccontrol "detach 09F0"
-wget -nv https://github.com/adesutherland/CMS-370-BREXX/releases/download/v1.0.0/BREXX.zip
-unzip BREXX.zip
-mv BREXX/gccbrx.cckd .
-rm BREXX.zip
-rm -r BREXX
-herccontrol "attach 09F0 3350 gccbrx.cckd"
-
 # YATA CMS
 wget -nv https://github.com/rosspatterson/yata/releases/download/v1.2.7/YATA-CMS.zip
 unzip YATA-CMS.zip

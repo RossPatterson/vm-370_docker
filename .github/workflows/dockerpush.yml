@@ -35,6 +35,7 @@ jobs:
            docker cp "dummy:/opt/hercules/vm370/vm50-8.cckd" "${{ runner.temp }}/vm370/vm50-8.cckd"
            docker cp "dummy:/opt/hercules/vm370/vm50u0.cckd" "${{ runner.temp }}/vm370/vm50u0.cckd"
            docker cp "dummy:/opt/hercules/vm370/vm50u1.cckd" "${{ runner.temp }}/vm370/vm50u1.cckd"
+           docker cp "dummy:/opt/hercules/vm370/gccbrx.cckd" "${{ runner.temp }}/vm370/gccbrx.cckd"
            docker rm -f dummy
            zip -D -j -r vm370.zip "${{ runner.temp }}/vm370"
            ls "${{ runner.temp }}/vm370"
